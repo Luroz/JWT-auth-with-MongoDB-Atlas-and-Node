@@ -4,17 +4,14 @@ const router = require('./routers/user')
 const cors = require("cors");
 //const url = require("url");
 const port = process.env.PORT
-const mw = require('./middleware/appMiddleware.js')
 require('./db/db')
 
 const app = express()
 
-
-
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(mw({ option1: router, option2: router }))
+app.use(router)
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
